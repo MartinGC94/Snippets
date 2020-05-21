@@ -1,0 +1,468 @@
+{
+    "Switch Advanced":  {
+                            "prefix":  "Switch Advanced",
+                            "body":  [
+                                         "switch -CaseSensitive -Exact -Regex -Wildcard (\\$x)",
+                                         "{",
+                                         "    \u0027value1\u0027",
+                                         "    {",
+                                         "    }",
+                                         "    {\\$_ -in \u0027A\u0027,\u0027B\u0027,\u0027C\u0027}",
+                                         "    {",
+                                         "    }",
+                                         "    Default",
+                                         "    {",
+                                         "    }",
+                                         "}$0"
+                                     ],
+                            "description":  "Advanced switch."
+                        },
+    "Requires RunAsAdministrator":  {
+                                        "prefix":  "Requires RunAsAdministrator",
+                                        "body":  [
+                                                     "#Requires -RunAsAdministrator$0"
+                                                 ],
+                                        "description":  "Requires RunAsAdministrator statement."
+                                    },
+    "Class":  {
+                  "prefix":  "Class",
+                  "body":  [
+                               "class TypeName",
+                               "{",
+                               "   # Property with validate set",
+                               "   [ValidateSet(\"val1\", \"Val2\")]",
+                               "   [string] \\$P1",
+                               "",
+                               "   # Static property",
+                               "   static [hashtable] \\$P2",
+                               "",
+                               "   # Hidden property does not show as result of Get-Member",
+                               "   hidden [int] \\$P3",
+                               "",
+                               "   # Constructor",
+                               "   TypeName ([string] \\$s)",
+                               "   {",
+                               "       \\$this.P1 = \\$s       ",
+                               "   }",
+                               "",
+                               "   # Static method",
+                               "   static [void] MemberMethod1([hashtable] \\$h)",
+                               "   {",
+                               "       [TypeName]::P2 = \\$h",
+                               "   }",
+                               "",
+                               "   # Instance method",
+                               "   [int] MemberMethod2([int] \\$i)",
+                               "   {",
+                               "       \\$this.P3 = \\$i",
+                               "       return \\$this.P3",
+                               "   }",
+                               "}$0"
+                           ],
+                  "description":  "Basic Powershell class"
+              },
+    "Here string":  {
+                        "prefix":  "Here string",
+                        "body":  [
+                                     "@\"$0",
+                                     "\"@"
+                                 ],
+                        "description":  "Empty here string"
+                    },
+    "ValidatePattern Attribute":  {
+                                      "prefix":  "ValidatePattern Attribute",
+                                      "body":  [
+                                                   "[ValidatePattern(\u0027\\w\u0027,Options=[System.Text.RegularExpressions.RegexOptions]::CultureInvariant)]$0"
+                                               ],
+                                      "description":  "ValidatePattern Attribute example."
+                                  },
+    "Requires Assembly":  {
+                              "prefix":  "Requires Assembly",
+                              "body":  [
+                                           "#Requires -Assembly path\\to\\foo.dll",
+                                           "#Requires -Assembly \"System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35\"$0"
+                                       ],
+                              "description":  "Requires Assembly statement."
+                          },
+    "SupportsWildcards Attribute":  {
+                                        "prefix":  "SupportsWildcards Attribute",
+                                        "body":  [
+                                                     "[SupportsWildcards()]$0"
+                                                 ],
+                                        "description":  "SupportsWildcards Attribute example."
+                                    },
+    "Alias Attribute":  {
+                            "prefix":  "Alias Attribute",
+                            "body":  [
+                                         "[Alias(\"Alias1\",\"Alias2\")]$0"
+                                     ],
+                            "description":  "Alias Attribute example."
+                        },
+    "ArgumentCompleter Attribute":  {
+                                        "prefix":  "ArgumentCompleter Attribute",
+                                        "body":  [
+                                                     "[ArgumentCompleter({",
+                                                     "    #Insert scriptblock content here",
+                                                     "})]$0"
+                                                 ],
+                                        "description":  "ArgumentCompleter Attribute example."
+                                    },
+    "Help":  {
+                 "prefix":  "Help",
+                 "body":  [
+                              "\u003c#",
+                              ".Synopsis",
+                              "    Short description.",
+                              ".DESCRIPTION",
+                              "    Long description.",
+                              ".PARAMETER Param1",
+                              "    Parameter description, add one for each parameter.",
+                              ".EXAMPLE",
+                              "    Verb-Noun -Param1 \"Text\"",
+                              "    Description of what the previous command did.",
+                              ".INPUTS",
+                              "    Inputs to this cmdlet (if any).",
+                              ".OUTPUTS",
+                              "    Output from this cmdlet (if any).",
+                              ".NOTES",
+                              "    General notes.",
+                              ".LINK",
+                              "    Related topics.",
+                              ".COMPONENT",
+                              "    The component this cmdlet belongs to.",
+                              ".ROLE",
+                              "    The role this cmdlet belongs to.",
+                              ".FUNCTIONALITY",
+                              "    The functionality that best describes this cmdlet.",
+                              "#\u003e$0"
+                          ],
+                 "description":  "Full help block for a function or script."
+             },
+    "ValidateCount Attribute":  {
+                                    "prefix":  "ValidateCount Attribute",
+                                    "body":  [
+                                                 "#Ensures the collection contains 1-10 items.",
+                                                 "[ValidateCount(1,10)]$0"
+                                             ],
+                                    "description":  "ValidateCount Attribute example."
+                                },
+    "ValidateScript Attribute":  {
+                                     "prefix":  "ValidateScript Attribute",
+                                     "body":  [
+                                                  "[ValidateScript({",
+                                                  "    #Insert scriptblock content here",
+                                                  "})]$0"
+                                              ],
+                                     "description":  "ValidateScript Attribute example."
+                                 },
+    "Switch":  {
+                   "prefix":  "Switch",
+                   "body":  [
+                                "switch (\\$x)",
+                                "{",
+                                "    \u0027value1\u0027",
+                                "    {",
+                                "    }",
+                                "    Default",
+                                "    {",
+                                "    }",
+                                "}$0"
+                            ],
+                   "description":  "Basic switch."
+               },
+    "PSTypeName Attribute":  {
+                                 "prefix":  "PSTypeName Attribute",
+                                 "body":  [
+                                              "[PSTypeName(\"Microsoft.Management.Infrastructure.CimInstance#ROOT/Microsoft/Windows/Storage/MSFT_Disk\")]$0"
+                                          ],
+                                 "description":  "PSTypeName Attribute example."
+                             },
+    "Argument Completer Scriptblock":  {
+                                           "prefix":  "Argument Completer Scriptblock",
+                                           "body":  [
+                                                        "{",
+                                                        "    param(\\$commandName, \\$parameterName, \\$wordToComplete, \\$commandAst, \\$fakeBoundParameters)",
+                                                        "",
+                                                        "    #Command or static items used for completion",
+                                                        "    \\$AllFiles=Get-ChildItem -Path \"C:\\\"",
+                                                        "",
+                                                        "    foreach (\\$Item in \\$AllFiles)",
+                                                        "    {",
+                                                        "        \\$CompletionText = \\$Item.Name",
+                                                        "        \\$ListItemText   = \\$Item.Name",
+                                                        "        \\$ResultType     = [System.Management.Automation.CompletionResultType]::ParameterValue",
+                                                        "        \\$ToolTip        = \\$Item.Name",
+                                                        "",
+                                                        "        [System.Management.Automation.CompletionResult]::new(\\$CompletionText,\\$ListItemText,\\$ResultType,\\$ToolTip)",
+                                                        "    }",
+                                                        "}$0"
+                                                    ],
+                                           "description":  "Basic scriptblock for argumentcompleters"
+                                       },
+    "ValidateLength Attribute":  {
+                                     "prefix":  "ValidateLength Attribute",
+                                     "body":  [
+                                                  "#Ensures the string is 1-10 characters long.",
+                                                  "[ValidateLength(1,10)]$0"
+                                              ],
+                                     "description":  "ValidateLength Attribute example."
+                                 },
+    "Requires Modules":  {
+                             "prefix":  "Requires Modules",
+                             "body":  [
+                                          "#Requires -Modules \"AzureRM.Netcore\"",
+                                          "#Requires -Modules @{ ModuleName=\"AzureRM.Netcore\"; ModuleVersion=\"0.12.0\" }$0"
+                                      ],
+                             "description":  "Requires Modules statement."
+                         },
+    "AllowEmptyString Attribute":  {
+                                       "prefix":  "AllowEmptyString Attribute",
+                                       "body":  [
+                                                    "[AllowEmptyString()]$0"
+                                                ],
+                                       "description":  "AllowEmptyString Attribute example."
+                                   },
+    "CmdletBinding Attribute":  {
+                                    "prefix":  "CmdletBinding Attribute",
+                                    "body":  [
+                                                 "[CmdletBinding(",
+                                                 "    PositionalBinding       = \\$true,",
+                                                 "    DefaultParameterSetName = \"ParameterSet1\",",
+                                                 "    SupportsShouldProcess   = \\$true,",
+                                                 "    SupportsPaging          = \\$true,",
+                                                 "    SupportsTransactions    = \\$true,",
+                                                 "    ConfirmImpact           = [System.Management.Automation.ConfirmImpact]::Medium,",
+                                                 "    HelpUri                 = \"https://google.com\",",
+                                                 "    RemotingCapability      = [System.Management.Automation.RemotingCapability]::None",
+                                                 ")]$0"
+                                             ],
+                                    "description":  "CmdletBinding Attribute example."
+                                },
+    "Requires Version":  {
+                             "prefix":  "Requires Version",
+                             "body":  [
+                                          "#Requires -Version 5.1$0"
+                                      ],
+                             "description":  "Requires Version statement."
+                         },
+    "Enum":  {
+                 "prefix":  "Enum",
+                 "body":  [
+                              "enum Animals",
+                              "{",
+                              "    Dog    = 0",
+                              "    Cat    = 1",
+                              "    Bird   = 2",
+                              "    Lizard = 3$0",
+                              "}"
+                          ],
+                 "description":  "Basic enum"
+             },
+    "Comment Block":  {
+                          "prefix":  "Comment Block",
+                          "body":  [
+                                       "\u003c#",
+                                       " #$0",
+                                       "#\u003e"
+                                   ],
+                          "description":  "Basic comment block"
+                      },
+    "Advanced Function":  {
+                              "prefix":  "Advanced Function",
+                              "body":  [
+                                           "function Verb-Noun",
+                                           "{",
+                                           "    [CmdletBinding()]",
+                                           "    [OutputType([String])]",
+                                           "",
+                                           "    Param",
+                                           "    (",
+                                           "        [Parameter()]",
+                                           "        [string[]]",
+                                           "        \\$Param1",
+                                           "    )",
+                                           "",
+                                           "    Begin",
+                                           "    {",
+                                           "    }",
+                                           "    Process",
+                                           "    {$0",
+                                           "    }",
+                                           "    End",
+                                           "    {",
+                                           "    }",
+                                           "}"
+                                       ],
+                              "description":  "Template for a standard Advanced function"
+                          },
+    "Do-Until loop":  {
+                          "prefix":  "Do-Until loop",
+                          "body":  [
+                                       "do",
+                                       "{$0",
+                                       "}",
+                                       "until (\\$x -gt 0)"
+                                   ],
+                          "description":  "Basic Do-Until loop"
+                      },
+    "Requires PSEdition":  {
+                               "prefix":  "Requires PSEdition",
+                               "body":  [
+                                            "#Requires -PSEdition Core",
+                                            "#Requires -PSEdition Desktop$0"
+                                        ],
+                               "description":  "Requires PSEdition statement."
+                           },
+    "Function":  {
+                     "prefix":  "Function",
+                     "body":  [
+                                  "function MyFunction (\\$param1, \\$param2)",
+                                  "{$0",
+                                  "}"
+                              ],
+                     "description":  "A basic function"
+                 },
+    "Parameter":  {
+                      "prefix":  "Parameter",
+                      "body":  [
+                                   "[Parameter()]",
+                                   "\\$Param1$0"
+                               ],
+                      "description":  "Basic script or function parameter."
+                  },
+    "AllowEmptyCollection Attribute":  {
+                                           "prefix":  "AllowEmptyCollection Attribute",
+                                           "body":  [
+                                                        "[AllowEmptyCollection()]$0"
+                                                    ],
+                                           "description":  "AllowEmptyCollection Attribute example."
+                                       },
+    "Switch File":  {
+                        "prefix":  "Switch File",
+                        "body":  [
+                                     "switch -File \"C:\\Test.txt\"",
+                                     "{",
+                                     "    \u0027ALineFromFile\u0027",
+                                     "    {",
+                                     "    }",
+                                     "}$0"
+                                 ],
+                        "description":  "Switch reading each line from a file."
+                    },
+    "Enum Bit flags":  {
+                           "prefix":  "Enum Bit flags",
+                           "body":  [
+                                        "[Flags()] enum Animals",
+                                        "{",
+                                        "    Dog    = 1",
+                                        "    Cat    = 2",
+                                        "    Bird   = 4",
+                                        "    Lizard = 8$0",
+                                        "}"
+                                    ],
+                           "description":  "Basic enum with bit flags"
+                       },
+    "Hidden Attribute":  {
+                             "prefix":  "Hidden Attribute",
+                             "body":  [
+                                          "[Hidden()]$0"
+                                      ],
+                             "description":  "Hidden Attribute example."
+                         },
+    "ValidateSet Attribute":  {
+                                  "prefix":  "ValidateSet Attribute",
+                                  "body":  [
+                                               "[ValidateSet(\"Cat\",\"Dog\",IgnoreCase=\\$false)]$0"
+                                           ],
+                                  "description":  "ValidateSet Attribute example."
+                              },
+    "ValidateRange Attribute":  {
+                                    "prefix":  "ValidateRange Attribute",
+                                    "body":  [
+                                                 "#Ensures the number is 1-10.",
+                                                 "[ValidateRange(1,10)]$0"
+                                             ],
+                                    "description":  "ValidateRange Attribute example."
+                                },
+    "ValidateNotNullOrEmpty Attribute":  {
+                                             "prefix":  "ValidateNotNullOrEmpty Attribute",
+                                             "body":  [
+                                                          "[ValidateNotNullOrEmpty()]$0"
+                                                      ],
+                                             "description":  "ValidateNotNullOrEmpty Attribute example."
+                                         },
+    "OutputType Attribute":  {
+                                 "prefix":  "OutputType Attribute",
+                                 "body":  [
+                                              "[OutputType([System.IO.DirectoryInfo],[System.IO.FileInfo])]$0"
+                                          ],
+                                 "description":  "OutputType Attribute example."
+                             },
+    "For loop":  {
+                     "prefix":  "For loop",
+                     "body":  [
+                                  "#runs 99 times",
+                                  "for (\\$i = 1; \\$i -lt 100; \\$i++)",
+                                  "{$0",
+                                  "}"
+                              ],
+                     "description":  "Basic For loop"
+                 },
+    "ValidateDrive Attribute":  {
+                                    "prefix":  "ValidateDrive Attribute",
+                                    "body":  [
+                                                 "#Ensures the path is in either PSDrive.",
+                                                 "[ValidateDrive(\"HKLM\",\"HKCU\")]$0"
+                                             ],
+                                    "description":  "ValidateDrive Attribute example."
+                                },
+    "Do-While loop":  {
+                          "prefix":  "Do-While loop",
+                          "body":  [
+                                       "do",
+                                       "{$0",
+                                       "}",
+                                       "while (\\$x -gt 0)"
+                                   ],
+                          "description":  "Basic Do-While loop"
+                      },
+    "AllowNull Attribute":  {
+                                "prefix":  "AllowNull Attribute",
+                                "body":  [
+                                             "[AllowNull()]$0"
+                                         ],
+                                "description":  "AllowNull Attribute example."
+                            },
+    "Parameter Attribute":  {
+                                "prefix":  "Parameter Attribute",
+                                "body":  [
+                                             "[Parameter(",
+                                             "    Position                        = 0,",
+                                             "    ParameterSetName                = \"ParameterSet1\",",
+                                             "    Mandatory                       = \\$true,",
+                                             "    ValueFromPipeline               = \\$true,",
+                                             "    ValueFromPipelineByPropertyName = \\$true,",
+                                             "    ValueFromRemainingArguments     = \\$true,",
+                                             "    HelpMessage                     = \"Mandatory help message.\",",
+                                             "    DontShow                        = \\$false",
+                                             ")]$0"
+                                         ],
+                                "description":  "Parameter Attribute example."
+                            },
+    "While loop":  {
+                       "prefix":  "While loop",
+                       "body":  [
+                                    "while (\\$x -gt 0)",
+                                    "{$0",
+                                    "}"
+                                ],
+                       "description":  "Simple While loop."
+                   },
+    "ValidateNotNull Attribute":  {
+                                      "prefix":  "ValidateNotNull Attribute",
+                                      "body":  [
+                                                   "[ValidateNotNull()]$0"
+                                               ],
+                                      "description":  "ValidateNotNull Attribute example."
+                                  }
+}

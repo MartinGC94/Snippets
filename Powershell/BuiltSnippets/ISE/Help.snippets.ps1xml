@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>Help</Title>
+                <Description>Full help block for a function or script.</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='567'>
+                    <![CDATA[<#
+.Synopsis
+    Short description.
+.DESCRIPTION
+    Long description.
+.PARAMETER Param1
+    Parameter description, add one for each parameter.
+.EXAMPLE
+    Verb-Noun -Param1 "Text"
+    Description of what the previous command did.
+.INPUTS
+    Inputs to this cmdlet (if any).
+.OUTPUTS
+    Output from this cmdlet (if any).
+.NOTES
+    General notes.
+.LINK
+    Related topics.
+.COMPONENT
+    The component this cmdlet belongs to.
+.ROLE
+    The role this cmdlet belongs to.
+.FUNCTIONALITY
+    The functionality that best describes this cmdlet.
+#>]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

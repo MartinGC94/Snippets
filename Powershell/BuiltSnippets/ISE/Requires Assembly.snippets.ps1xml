@@ -1,0 +1,22 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>Requires Assembly</Title>
+                <Description>Requires Assembly statement.</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='154'>
+                    <![CDATA[#Requires -Assembly path\to\foo.dll
+#Requires -Assembly "System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

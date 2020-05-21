@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>For loop</Title>
+                <Description>Basic For loop</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='49'>
+                    <![CDATA[#runs 99 times
+for ($i = 1; $i -lt 100; $i++)
+{
+}]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

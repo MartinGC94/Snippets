@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>Class</Title>
+                <Description>Basic Powershell class</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='552'>
+                    <![CDATA[class TypeName
+{
+   # Property with validate set
+   [ValidateSet("val1", "Val2")]
+   [string] $P1
+
+   # Static property
+   static [hashtable] $P2
+
+   # Hidden property does not show as result of Get-Member
+   hidden [int] $P3
+
+   # Constructor
+   TypeName ([string] $s)
+   {
+       $this.P1 = $s       
+   }
+
+   # Static method
+   static [void] MemberMethod1([hashtable] $h)
+   {
+       [TypeName]::P2 = $h
+   }
+
+   # Instance method
+   [int] MemberMethod2([int] $i)
+   {
+       $this.P3 = $i
+       return $this.P3
+   }
+}]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

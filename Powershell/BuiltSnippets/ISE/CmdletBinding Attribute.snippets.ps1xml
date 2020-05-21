@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>CmdletBinding Attribute</Title>
+                <Description>CmdletBinding Attribute example.</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='444'>
+                    <![CDATA[[CmdletBinding(
+    PositionalBinding       = $true,
+    DefaultParameterSetName = "ParameterSet1",
+    SupportsShouldProcess   = $true,
+    SupportsPaging          = $true,
+    SupportsTransactions    = $true,
+    ConfirmImpact           = [System.Management.Automation.ConfirmImpact]::Medium,
+    HelpUri                 = "https://google.com",
+    RemotingCapability      = [System.Management.Automation.RemotingCapability]::None
+)]]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

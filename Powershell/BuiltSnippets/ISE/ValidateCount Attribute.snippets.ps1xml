@@ -1,0 +1,22 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>ValidateCount Attribute</Title>
+                <Description>ValidateCount Attribute example.</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='67'>
+                    <![CDATA[#Ensures the collection contains 1-10 items.
+[ValidateCount(1,10)]]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

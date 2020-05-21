@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>Advanced Function</Title>
+                <Description>Template for a standard Advanced function</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='206'>
+                    <![CDATA[function Verb-Noun
+{
+    [CmdletBinding()]
+    [OutputType([String])]
+
+    Param
+    (
+        [Parameter()]
+        [string[]]
+        $Param1
+    )
+
+    Begin
+    {
+    }
+    Process
+    {
+    }
+    End
+    {
+    }
+}]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+
