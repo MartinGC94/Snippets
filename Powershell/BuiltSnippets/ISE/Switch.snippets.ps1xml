@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='72'>
+                <Script Language='PowerShell' CaretOffset='10'>
                     <![CDATA[switch ($x)
 {
     'value1'

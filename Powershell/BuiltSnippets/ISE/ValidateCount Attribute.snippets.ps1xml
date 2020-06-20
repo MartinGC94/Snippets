@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='67'>
+                <Script Language='PowerShell' CaretOffset='66'>
                     <![CDATA[#Ensures the collection contains 1-10 items.
 [ValidateCount(1,10)]]]>
                 </Script>

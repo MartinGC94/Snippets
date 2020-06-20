@@ -2,16 +2,15 @@
     SnippetName="Argument Completer Scriptblock"
     Description="Basic scriptblock for argumentcompleters"
     Author="MartinGC94"
-    CaretOffset=565
 
 Snippet=@'
 {
     param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
 
     #Command or static items used for completion
-    $AllFiles=Get-ChildItem -Path "C:\"
+    $ItemsToShow=Get-ChildItem -Path "C:\" | Where-Object -Property Name -Like "$wordToComplete*"
 
-    foreach ($Item in $AllFiles)
+    foreach ($Item in $ItemsToShow)
     {
         $CompletionText = $Item.Name
         $ListItemText   = $Item.Name
@@ -20,6 +19,6 @@ Snippet=@'
 
         [System.Management.Automation.CompletionResult]::new($CompletionText,$ListItemText,$ResultType,$ToolTip)
     }
-}
+}^
 '@
 }

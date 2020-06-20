@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='206'>
+                <Script Language='PowerShell' CaretOffset='9'>
                     <![CDATA[function Verb-Noun
 {
     [CmdletBinding()]

@@ -2,9 +2,8 @@
     SnippetName="Alias Attribute"
     Description="Alias Attribute example."
     Author="MartinGC94"
-    CaretOffset=26
 
 Snippet=@'
-[Alias("Alias1","Alias2")]
+[Alias("Alias1","Alias2")]^
 '@
 }

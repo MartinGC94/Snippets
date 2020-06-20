@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='6'>
+                <Script Language='PowerShell' CaretOffset='5'>
                     <![CDATA[<#
  #
 #>]]>

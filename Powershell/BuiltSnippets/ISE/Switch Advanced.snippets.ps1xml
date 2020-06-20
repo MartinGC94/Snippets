@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='151'>
+                <Script Language='PowerShell' CaretOffset='140'>
                     <![CDATA[switch -CaseSensitive -Exact -Regex -Wildcard ($x)
 {
     'value1'

@@ -2,7 +2,6 @@
     SnippetName="Parameter Attribute"
     Description="Parameter Attribute example."
     Author="MartinGC94"
-    CaretOffset=409
 
 Snippet=@'
 [Parameter(
@@ -14,6 +13,6 @@ Snippet=@'
     ValueFromRemainingArguments     = $true,
     HelpMessage                     = "Mandatory help message.",
     DontShow                        = $false
-)]
+)]^
 '@
 }

@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='55'>
+                <Script Language='PowerShell' CaretOffset='54'>
                     <![CDATA[#Requires -PSEdition Core
 #Requires -PSEdition Desktop]]>
                 </Script>

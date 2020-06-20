@@ -11,8 +11,9 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='22'>
+                <Script Language='PowerShell' CaretOffset='30'>
                     <![CDATA[[Parameter()]
+[string]
 $Param1]]>
                 </Script>
             </Code>

@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='444'>
+                <Script Language='PowerShell' CaretOffset='435'>
                     <![CDATA[[CmdletBinding(
     PositionalBinding       = $true,
     DefaultParameterSetName = "ParameterSet1",

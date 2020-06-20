@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='89'>
+                <Script Language='PowerShell' CaretOffset='15'>
                     <![CDATA[[Flags()] enum Animals
 {
     Dog    = 1

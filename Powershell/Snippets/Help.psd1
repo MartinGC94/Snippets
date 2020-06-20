@@ -2,7 +2,6 @@
     SnippetName="Help"
     Description="Full help block for a function or script."
     Author="MartinGC94"
-    CaretOffset=567
 
 Snippet=@'
 <#
@@ -29,6 +28,6 @@ Snippet=@'
     The role this cmdlet belongs to.
 .FUNCTIONALITY
     The functionality that best describes this cmdlet.
-#>
+#>^
 '@
 }

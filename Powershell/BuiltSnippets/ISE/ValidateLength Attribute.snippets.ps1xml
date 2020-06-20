@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='68'>
+                <Script Language='PowerShell' CaretOffset='67'>
                     <![CDATA[#Ensures the string is 1-10 characters long.
 [ValidateLength(1,10)]]]>
                 </Script>

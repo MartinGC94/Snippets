@@ -27,7 +27,7 @@
     "Class":  {
                   "prefix":  "Class",
                   "body":  [
-                               "class TypeName",
+                               "class MyCustomType",
                                "{",
                                "   # Property with validate set",
                                "   [ValidateSet(\"val1\", \"Val2\")]",
@@ -40,7 +40,7 @@
                                "   hidden [int] \\$P3",
                                "",
                                "   # Constructor",
-                               "   TypeName ([string] \\$s)",
+                               "   MyCustomType ([string] \\$s)",
                                "   {",
                                "       \\$this.P1 = \\$s       ",
                                "   }",
@@ -48,7 +48,7 @@
                                "   # Static method",
                                "   static [void] MemberMethod1([hashtable] \\$h)",
                                "   {",
-                               "       [TypeName]::P2 = \\$h",
+                               "       [MyCustomType]::P2 = \\$h",
                                "   }",
                                "",
                                "   # Instance method",
@@ -98,12 +98,23 @@
                                      ],
                             "description":  "Alias Attribute example."
                         },
+    "Do-While loop":  {
+                          "prefix":  "Do-While loop",
+                          "body":  [
+                                       "do",
+                                       "{",
+                                       "$0}",
+                                       "while (\\$x -gt 0)"
+                                   ],
+                          "description":  "Basic Do-While loop"
+                      },
     "ArgumentCompleter Attribute":  {
                                         "prefix":  "ArgumentCompleter Attribute",
                                         "body":  [
-                                                     "[ArgumentCompleter({",
-                                                     "    #Insert scriptblock content here",
-                                                     "})]$0"
+                                                     "[ArgumentCompleter(",
+                                                     "    #Insert scriptblock here",
+                                                     "$0",
+                                                     ")]"
                                                  ],
                                         "description":  "ArgumentCompleter Attribute example."
                                     },
@@ -149,16 +160,17 @@
     "ValidateScript Attribute":  {
                                      "prefix":  "ValidateScript Attribute",
                                      "body":  [
-                                                  "[ValidateScript({",
-                                                  "    #Insert scriptblock content here",
-                                                  "})]$0"
+                                                  "[ValidateScript(",
+                                                  "    #Insert scriptblock here",
+                                                  "$0",
+                                                  ")]"
                                               ],
                                      "description":  "ValidateScript Attribute example."
                                  },
     "Switch":  {
                    "prefix":  "Switch",
                    "body":  [
-                                "switch (\\$x)",
+                                "switch (\\$x$0)",
                                 "{",
                                 "    \u0027value1\u0027",
                                 "    {",
@@ -166,7 +178,7 @@
                                 "    Default",
                                 "    {",
                                 "    }",
-                                "}$0"
+                                "}"
                             ],
                    "description":  "Basic switch."
                },
@@ -184,9 +196,9 @@
                                                         "    param(\\$commandName, \\$parameterName, \\$wordToComplete, \\$commandAst, \\$fakeBoundParameters)",
                                                         "",
                                                         "    #Command or static items used for completion",
-                                                        "    \\$AllFiles=Get-ChildItem -Path \"C:\\\"",
+                                                        "    \\$ItemsToShow=Get-ChildItem -Path \"C:\\\" | Where-Object -Property Name -Like \"\\$wordToComplete*\"",
                                                         "",
-                                                        "    foreach (\\$Item in \\$AllFiles)",
+                                                        "    foreach (\\$Item in \\$ItemsToShow)",
                                                         "    {",
                                                         "        \\$CompletionText = \\$Item.Name",
                                                         "        \\$ListItemText   = \\$Item.Name",
@@ -248,12 +260,12 @@
     "Enum":  {
                  "prefix":  "Enum",
                  "body":  [
-                              "enum Animals",
+                              "enum $0Animals",
                               "{",
                               "    Dog    = 0",
                               "    Cat    = 1",
                               "    Bird   = 2",
-                              "    Lizard = 3$0",
+                              "    Lizard = 3",
                               "}"
                           ],
                  "description":  "Basic enum"
@@ -270,7 +282,7 @@
     "Advanced Function":  {
                               "prefix":  "Advanced Function",
                               "body":  [
-                                           "function Verb-Noun",
+                                           "function V$0erb-Noun",
                                            "{",
                                            "    [CmdletBinding()]",
                                            "    [OutputType([String])]",
@@ -286,7 +298,7 @@
                                            "    {",
                                            "    }",
                                            "    Process",
-                                           "    {$0",
+                                           "    {",
                                            "    }",
                                            "    End",
                                            "    {",
@@ -299,8 +311,8 @@
                           "prefix":  "Do-Until loop",
                           "body":  [
                                        "do",
-                                       "{$0",
-                                       "}",
+                                       "{",
+                                       "$0}",
                                        "until (\\$x -gt 0)"
                                    ],
                           "description":  "Basic Do-Until loop"
@@ -316,8 +328,8 @@
     "Function":  {
                      "prefix":  "Function",
                      "body":  [
-                                  "function MyFunction (\\$param1, \\$param2)",
-                                  "{$0",
+                                  "function My$0Function (\\$param1, \\$param2)",
+                                  "{",
                                   "}"
                               ],
                      "description":  "A basic function"
@@ -326,6 +338,7 @@
                       "prefix":  "Parameter",
                       "body":  [
                                    "[Parameter()]",
+                                   "[string]",
                                    "\\$Param1$0"
                                ],
                       "description":  "Basic script or function parameter."
@@ -352,12 +365,12 @@
     "Enum Bit flags":  {
                            "prefix":  "Enum Bit flags",
                            "body":  [
-                                        "[Flags()] enum Animals",
+                                        "[Flags()] enum $0Animals",
                                         "{",
                                         "    Dog    = 1",
                                         "    Cat    = 2",
                                         "    Bird   = 4",
-                                        "    Lizard = 8$0",
+                                        "    Lizard = 8",
                                         "}"
                                     ],
                            "description":  "Basic enum with bit flags"
@@ -416,16 +429,45 @@
                                              ],
                                     "description":  "ValidateDrive Attribute example."
                                 },
-    "Do-While loop":  {
-                          "prefix":  "Do-While loop",
-                          "body":  [
-                                       "do",
-                                       "{$0",
-                                       "}",
-                                       "while (\\$x -gt 0)"
-                                   ],
-                          "description":  "Basic Do-While loop"
-                      },
+    "DynamicParameterFull":  {
+                                 "prefix":  "DynamicParameterFull",
+                                 "body":  [
+                                              "DynamicParam",
+                                              "{",
+                                              "    #Dictionary that contains all dynamic parameters to show",
+                                              "    \\$DynamicParamsToShow = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()",
+                                              "    ",
+                                              "    #region DynamicParameter1 definition",
+                                              "    \\$ParameterName=\"DynamicParameter1\"",
+                                              "    \\$ParameterType=[string]",
+                                              "    \\$ParameterAttributes=[System.Collections.ObjectModel.Collection[System.Attribute]]::new()",
+                                              "",
+                                              "    #Parameter attribute",
+                                              "    \\$Attribute=[System.Management.Automation.ParameterAttribute]::new()",
+                                              "    \\$Attribute.Mandatory=\\$true",
+                                              "    \\$Attribute.ParameterSetName=\"ParameterSet1\"",
+                                              "    \\$ParameterAttributes.Add(\\$Attribute)",
+                                              "",
+                                              "    #Alias attribute",
+                                              "    \\$Attribute=[System.Management.Automation.AliasAttribute]::new(\"DP1\")",
+                                              "    \\$ParameterAttributes.Add(\\$Attribute)",
+                                              "",
+                                              "    #Create dynamic parameter",
+                                              "    \\$Parameter=[System.Management.Automation.RuntimeDefinedParameter]::new(\\$ParameterName, \\$ParameterType,\\$ParameterAttributes)",
+                                              "    #endregion",
+                                              "",
+                                              "    #Check if a parameter is set, has a certain value, etc. before adding this dynamic parameter.",
+                                              "    if (\\$SomeCondition -eq \\$true)",
+                                              "    {",
+                                              "        \\$DynamicParamsToShow.Add(\\$ParameterName,\\$Parameter)",
+                                              "    }",
+                                              "",
+                                              "",
+                                              "    return \\$DynamicParamsToShow",
+                                              "}$0"
+                                          ],
+                                 "description":  "Example for defining a dynamic parameter block with 1 parameter."
+                             },
     "AllowNull Attribute":  {
                                 "prefix":  "AllowNull Attribute",
                                 "body":  [

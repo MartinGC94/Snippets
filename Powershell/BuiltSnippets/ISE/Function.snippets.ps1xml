@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='41'>
+                <Script Language='PowerShell' CaretOffset='9'>
                     <![CDATA[function MyFunction ($param1, $param2)
 {
 }]]>

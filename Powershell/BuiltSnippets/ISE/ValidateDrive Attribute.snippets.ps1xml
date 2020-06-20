@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='71'>
+                <Script Language='PowerShell' CaretOffset='70'>
                     <![CDATA[#Ensures the path is in either PSDrive.
 [ValidateDrive("HKLM","HKCU")]]]>
                 </Script>

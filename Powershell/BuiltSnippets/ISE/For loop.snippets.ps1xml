@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='49'>
+                <Script Language='PowerShell' CaretOffset='47'>
                     <![CDATA[#runs 99 times
 for ($i = 1; $i -lt 100; $i++)
 {

@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='154'>
+                <Script Language='PowerShell' CaretOffset='153'>
                     <![CDATA[#Requires -Assembly path\to\foo.dll
 #Requires -Assembly "System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"]]>
                 </Script>

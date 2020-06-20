@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='67'>
+                <Script Language='PowerShell' CaretOffset='62'>
                     <![CDATA[switch -File "C:\Test.txt"
 {
     'ALineFromFile'

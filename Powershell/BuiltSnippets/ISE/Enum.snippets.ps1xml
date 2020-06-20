@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='79'>
+                <Script Language='PowerShell' CaretOffset='5'>
                     <![CDATA[enum Animals
 {
     Dog    = 0

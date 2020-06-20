@@ -2,10 +2,9 @@
     SnippetName="Advanced Function"
     Description="Template for a standard Advanced function"
     Author="MartinGC94"
-    CaretOffset=206
 
 Snippet=@'
-function Verb-Noun
+function ^Verb-Noun
 {
     [CmdletBinding()]
     [OutputType([String])]

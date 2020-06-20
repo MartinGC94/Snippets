@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='19'>
+                <Script Language='PowerShell' CaretOffset='18'>
                     <![CDATA[while ($x -gt 0)
 {
 }]]>

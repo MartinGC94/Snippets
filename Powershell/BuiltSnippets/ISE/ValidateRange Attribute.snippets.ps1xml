@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='51'>
+                <Script Language='PowerShell' CaretOffset='50'>
                     <![CDATA[#Ensures the number is 1-10.
 [ValidateRange(1,10)]]]>
                 </Script>

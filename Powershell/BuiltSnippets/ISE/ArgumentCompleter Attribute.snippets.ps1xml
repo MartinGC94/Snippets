@@ -11,10 +11,11 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='63'>
-                    <![CDATA[[ArgumentCompleter({
-    #Insert scriptblock content here
-})]]]>
+                <Script Language='PowerShell' CaretOffset='49'>
+                    <![CDATA[[ArgumentCompleter(
+    #Insert scriptblock here
+
+)]]]>
                 </Script>
             </Code>
 

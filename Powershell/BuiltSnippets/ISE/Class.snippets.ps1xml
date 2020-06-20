@@ -11,8 +11,8 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='552'>
-                    <![CDATA[class TypeName
+                <Script Language='PowerShell' CaretOffset='534'>
+                    <![CDATA[class MyCustomType
 {
    # Property with validate set
    [ValidateSet("val1", "Val2")]
@@ -25,7 +25,7 @@
    hidden [int] $P3
 
    # Constructor
-   TypeName ([string] $s)
+   MyCustomType ([string] $s)
    {
        $this.P1 = $s       
    }
@@ -33,7 +33,7 @@
    # Static method
    static [void] MemberMethod1([hashtable] $h)
    {
-       [TypeName]::P2 = $h
+       [MyCustomType]::P2 = $h
    }
 
    # Instance method

@@ -2,10 +2,9 @@
     SnippetName="Class"
     Description="Basic Powershell class"
     Author="MartinGC94"
-    CaretOffset=552
 
 Snippet=@'
-class TypeName
+class MyCustomType
 {
    # Property with validate set
    [ValidateSet("val1", "Val2")]
@@ -18,7 +17,7 @@ class TypeName
    hidden [int] $P3
 
    # Constructor
-   TypeName ([string] $s)
+   MyCustomType ([string] $s)
    {
        $this.P1 = $s       
    }
@@ -26,7 +25,7 @@ class TypeName
    # Static method
    static [void] MemberMethod1([hashtable] $h)
    {
-       [TypeName]::P2 = $h
+       [MyCustomType]::P2 = $h
    }
 
    # Instance method
@@ -35,6 +34,6 @@ class TypeName
        $this.P3 = $i
        return $this.P3
    }
-}
+}^
 '@
 }

@@ -11,7 +11,7 @@
             </Header>
 
             <Code>
-                <Script Language='PowerShell' CaretOffset='114'>
+                <Script Language='PowerShell' CaretOffset='113'>
                     <![CDATA[#Requires -Modules "AzureRM.Netcore"
 #Requires -Modules @{ ModuleName="AzureRM.Netcore"; ModuleVersion="0.12.0" }]]>
                 </Script>
