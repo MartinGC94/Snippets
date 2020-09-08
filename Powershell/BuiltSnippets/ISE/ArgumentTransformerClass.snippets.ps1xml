@@ -1,0 +1,44 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+    <Snippets  xmlns='http://schemas.microsoft.com/PowerShell/Snippets'>
+        <Snippet Version='1.0.0'>
+            <Header>
+                <Title>ArgumentTransformerClass</Title>
+                <Description>ArgumentTransformer class example</Description>
+                <Author>MartinGC94</Author>
+                <SnippetTypes>
+                    <SnippetType>Expansion</SnippetType>
+                </SnippetTypes>
+            </Header>
+
+            <Code>
+                <Script Language='PowerShell' CaretOffset='729'>
+                    <![CDATA[class TimeZoneInfoTransform : System.Management.Automation.ArgumentTransformationAttribute 
+{
+    [System.Object] Transform([System.Management.Automation.EngineIntrinsics]$engineIntrinsics, [System.Object]$inputData)
+    {
+        if ($inputData -is [System.TimeZoneInfo])
+        {
+            return $inputData
+        }
+        
+        $AvailableTimeZones=[System.TimeZoneInfo]::GetSystemTimeZones()
+
+        $FoundTimeZone=foreach ($TimeZone in $AvailableTimeZones)
+        {
+            if ($inputData -eq $TimeZone.Id -or $inputData -eq $TimeZone.DisplayName)
+            {
+                $TimeZone
+                break
+            }
+        }
+        return $FoundTimeZone
+    }
+}
+#How to use:
+[TimeZoneInfoTransform()]]]>
+                </Script>
+            </Code>
+
+    </Snippet>
+</Snippets>
+

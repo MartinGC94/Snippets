@@ -11,5 +11,9 @@ Snippet=@'
     Bird   = 4
     Lizard = 8
 }
+#How to use:
+# [Animals]5
+# $SetFlags=[Animals]6
+# $SetFlags.HasFlag([Animals]::Bird)
 '@
 }

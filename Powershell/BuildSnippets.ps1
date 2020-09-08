@@ -122,7 +122,7 @@ foreach ($Item in $Data)
         CaretOffset=$Item.CaretOffset
         OutputDirectory="$PSScriptRoot\BuiltSnippets\ISE"
     }
-    New-IseSnippet2 @IseSnippet
+    New-IseSnippet2 @IseSnippet -Force
 }
 
 #Create VS Code snippets
@@ -145,4 +145,5 @@ foreach ($Item in $Data)
         }
     )
 }
+[void](New-Item -Path "$PSScriptRoot\BuiltSnippets\VS Code" -ItemType Directory -Force)
 [pscustomobject]$VsCodeSnippets | ConvertTo-Json | Out-File "$PSScriptRoot\BuiltSnippets\VS Code\PowerShell.json" -Encoding default -Force

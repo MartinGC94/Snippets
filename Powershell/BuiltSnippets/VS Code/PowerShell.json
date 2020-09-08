@@ -17,46 +17,49 @@
                                      ],
                             "description":  "Advanced switch."
                         },
-    "Requires RunAsAdministrator":  {
-                                        "prefix":  "Requires RunAsAdministrator",
-                                        "body":  [
-                                                     "#Requires -RunAsAdministrator$0"
-                                                 ],
-                                        "description":  "Requires RunAsAdministrator statement."
-                                    },
+    "For loop":  {
+                     "prefix":  "For loop",
+                     "body":  [
+                                  "#runs 99 times",
+                                  "for (\\$i = 1; \\$i -lt 100; \\$i++)",
+                                  "{$0",
+                                  "}"
+                              ],
+                     "description":  "Basic For loop"
+                 },
     "Class":  {
                   "prefix":  "Class",
                   "body":  [
                                "class MyCustomType",
                                "{",
-                               "   # Property with validate set",
-                               "   [ValidateSet(\"val1\", \"Val2\")]",
-                               "   [string] \\$P1",
+                               "    # Property with validate set",
+                               "    [ValidateSet(\"val1\", \"Val2\")]",
+                               "    [string] \\$P1",
                                "",
-                               "   # Static property",
-                               "   static [hashtable] \\$P2",
+                               "    # Static property",
+                               "    static [hashtable] \\$P2",
                                "",
-                               "   # Hidden property does not show as result of Get-Member",
-                               "   hidden [int] \\$P3",
+                               "    # Hidden property does not show as result of Get-Member",
+                               "    hidden [int] \\$P3",
                                "",
-                               "   # Constructor",
-                               "   MyCustomType ([string] \\$s)",
-                               "   {",
-                               "       \\$this.P1 = \\$s       ",
-                               "   }",
+                               "    # Constructor",
+                               "    MyCustomType ([string] \\$s)",
+                               "    {",
+                               "        \\$this.P1 = \\$s",
+                               "    }",
                                "",
-                               "   # Static method",
-                               "   static [void] MemberMethod1([hashtable] \\$h)",
-                               "   {",
-                               "       [MyCustomType]::P2 = \\$h",
-                               "   }",
+                               "    # Static method",
+                               "    static [void] MemberMethod1([hashtable] \\$h)",
+                               "    {",
+                               "        [MyCustomType]::P2 = \\$h",
+                               "    }",
                                "",
-                               "   # Instance method",
-                               "   [int] MemberMethod2([int] \\$i)",
-                               "   {",
-                               "       \\$this.P3 = \\$i",
-                               "       return \\$this.P3",
-                               "   }",
+                               "    # Instance method",
+                               "    [int] MemberMethod2([int] \\$i)",
+                               "    {",
+                               "        \\$this.P3 = \\$i",
+                               "        return \\$this.P3",
+                               "    }",
                                "}$0"
                            ],
                   "description":  "Basic Powershell class"
@@ -91,6 +94,24 @@
                                                  ],
                                         "description":  "SupportsWildcards Attribute example."
                                     },
+    "EventFilterHashtable":  {
+                                 "prefix":  "EventFilterHashtable",
+                                 "body":  [
+                                              "@{",
+                                              "    LogName      = \"System\"",
+                                              "    ProviderName = \"Microsoft-Windows-Kernel-General\"",
+                                              "    Path         = \"\\$env:windir\\System32\\Winevt\\Logs\\System.evtx\"",
+                                              "    Keywords     = 128",
+                                              "    ID           = 12",
+                                              "    Level        = 4",
+                                              "    StartTime    = (Get-Date).AddDays(-2)",
+                                              "    EndTime      = (Get-Date)",
+                                              "    UserID       = \"S-1-5-18\"",
+                                              "    Data         = \"BootMode\", \"0\"",
+                                              "}$0"
+                                          ],
+                                 "description":  "Complete event log Hashtable filter"
+                             },
     "Alias Attribute":  {
                             "prefix":  "Alias Attribute",
                             "body":  [
@@ -157,6 +178,13 @@
                                              ],
                                     "description":  "ValidateCount Attribute example."
                                 },
+    "Requires RunAsAdministrator":  {
+                                        "prefix":  "Requires RunAsAdministrator",
+                                        "body":  [
+                                                     "#Requires -RunAsAdministrator$0"
+                                                 ],
+                                        "description":  "Requires RunAsAdministrator statement."
+                                    },
     "ValidateScript Attribute":  {
                                      "prefix":  "ValidateScript Attribute",
                                      "body":  [
@@ -182,6 +210,36 @@
                             ],
                    "description":  "Basic switch."
                },
+    "ArgumentTransformerClass":  {
+                                     "prefix":  "ArgumentTransformerClass",
+                                     "body":  [
+                                                  "class TimeZoneInfoTransform : System.Management.Automation.ArgumentTransformationAttribute ",
+                                                  "{",
+                                                  "    [System.Object] Transform([System.Management.Automation.EngineIntrinsics]\\$engineIntrinsics, [System.Object]\\$inputData)",
+                                                  "    {",
+                                                  "        if (\\$inputData -is [System.TimeZoneInfo])",
+                                                  "        {",
+                                                  "            return \\$inputData",
+                                                  "        }",
+                                                  "        ",
+                                                  "        \\$AvailableTimeZones=[System.TimeZoneInfo]::GetSystemTimeZones()",
+                                                  "",
+                                                  "        \\$FoundTimeZone=foreach (\\$TimeZone in \\$AvailableTimeZones)",
+                                                  "        {",
+                                                  "            if (\\$inputData -eq \\$TimeZone.Id -or \\$inputData -eq \\$TimeZone.DisplayName)",
+                                                  "            {",
+                                                  "                \\$TimeZone",
+                                                  "                break",
+                                                  "            }",
+                                                  "        }",
+                                                  "        return \\$FoundTimeZone",
+                                                  "    }",
+                                                  "}",
+                                                  "#How to use:",
+                                                  "[TimeZoneInfoTransform()]$0"
+                                              ],
+                                     "description":  "ArgumentTransformer class example"
+                                 },
     "PSTypeName Attribute":  {
                                  "prefix":  "PSTypeName Attribute",
                                  "body":  [
@@ -194,9 +252,10 @@
                                            "body":  [
                                                         "{",
                                                         "    param(\\$commandName, \\$parameterName, \\$wordToComplete, \\$commandAst, \\$fakeBoundParameters)",
+                                                        "    \\$RealWordToComplete=\\$wordToComplete -replace \"`\"|\u0027\"",
                                                         "",
                                                         "    #Command or static items used for completion",
-                                                        "    \\$ItemsToShow=Get-ChildItem -Path \"C:\\\" | Where-Object -Property Name -Like \"\\$wordToComplete*\"",
+                                                        "    \\$ItemsToShow=Get-ChildItem -Path \"C:\\\" | Where-Object -Property Name -Like \"\\$RealWordToComplete*\"",
                                                         "",
                                                         "    foreach (\\$Item in \\$ItemsToShow)",
                                                         "    {",
@@ -205,6 +264,10 @@
                                                         "        \\$ResultType     = [System.Management.Automation.CompletionResultType]::ParameterValue",
                                                         "        \\$ToolTip        = \\$Item.Name",
                                                         "",
+                                                        "        if (\\$CompletionText -like \" \")",
+                                                        "        {",
+                                                        "            \\$CompletionText=\"`\"\\$CompletionText`\"\"",
+                                                        "        }",
                                                         "        [System.Management.Automation.CompletionResult]::new(\\$CompletionText,\\$ListItemText,\\$ResultType,\\$ToolTip)",
                                                         "    }",
                                                         "}$0"
@@ -365,13 +428,17 @@
     "Enum Bit flags":  {
                            "prefix":  "Enum Bit flags",
                            "body":  [
-                                        "[Flags()] enum $0Animals",
+                                        "[Flags()] enum An$0imals",
                                         "{",
                                         "    Dog    = 1",
                                         "    Cat    = 2",
                                         "    Bird   = 4",
                                         "    Lizard = 8",
-                                        "}"
+                                        "}",
+                                        "#How to use:",
+                                        "# [Animals]5",
+                                        "# \\$SetFlags=[Animals]6",
+                                        "# \\$SetFlags.HasFlag([Animals]::Bird)"
                                     ],
                            "description":  "Basic enum with bit flags"
                        },
@@ -411,16 +478,16 @@
                                           ],
                                  "description":  "OutputType Attribute example."
                              },
-    "For loop":  {
-                     "prefix":  "For loop",
-                     "body":  [
-                                  "#runs 99 times",
-                                  "for (\\$i = 1; \\$i -lt 100; \\$i++)",
-                                  "{$0",
-                                  "}"
-                              ],
-                     "description":  "Basic For loop"
-                 },
+    "Loop Label.":  {
+                        "prefix":  "Loop Label.",
+                        "body":  [
+                                     ":LoopLabel foreach (\\$Item in \\$Collection)",
+                                     "{",
+                                     "    break LoopLabel",
+                                     "}$0"
+                                 ],
+                        "description":  "Loop Label."
+                    },
     "ValidateDrive Attribute":  {
                                     "prefix":  "ValidateDrive Attribute",
                                     "body":  [
@@ -468,6 +535,30 @@
                                           ],
                                  "description":  "Example for defining a dynamic parameter block with 1 parameter."
                              },
+    "EventFilterXML":  {
+                           "prefix":  "EventFilterXML",
+                           "body":  [
+                                        "@\"",
+                                        "\u003cQueryList\u003e",
+                                        "",
+                                        "  \u003cQuery Id=\"0\" Path=\"System\"\u003e",
+                                        "    \u003cSelect Path=\"System\"\u003e",
+                                        "      *[System[Provider[@Name=\u0027Microsoft-Windows-Kernel-Boot\u0027 or @Name=\u0027Microsoft-Windows-ActionQueue\u0027] and",
+                                        "      \u003c!--Log level. Supports 1-5. Critical,Error,Warning,Info,Show.--\u003e",
+                                        "      Level=4 and",
+                                        "      EventID = 27 and",
+                                        "      \u003c!--Events logged within the last 24 hours.--\u003e",
+                                        "      TimeCreated[timediff(@SystemTime) \u0026lt;= \\$((New-TimeSpan -Hours 24).TotalMilliseconds)]]] and",
+                                        "      \u003c!--Event specific data.--\u003e",
+                                        "      *[EventData[Data[@Name=\u0027BootType\u0027] and (Data=\u00270\u0027)]]",
+                                        "    \u003c/Select\u003e",
+                                        "  \u003c/Query\u003e",
+                                        "",
+                                        "\u003c/QueryList\u003e",
+                                        "\"@$0"
+                                    ],
+                           "description":  "Basic event log XML filter"
+                       },
     "AllowNull Attribute":  {
                                 "prefix":  "AllowNull Attribute",
                                 "body":  [
