@@ -31,10 +31,9 @@ function New-IseSnippet2
 
     Begin
     {
-        $CleanedText=$Text.Replace("`r",'')
         $snippetPath = $OutputDirectory
         
-        if($CleanedText.IndexOf("]]>") -ne -1)
+        if($Text.IndexOf("]]>") -ne -1)
         {
             throw '{0} cannot contain the following sequence of characters: "{1}".' -f "Text","]]>"
         }
@@ -62,7 +61,7 @@ function New-IseSnippet2
 
             <Code>
                 <Script Language='PowerShell' CaretOffset='$CaretOffset'>
-                    <![CDATA[$CleanedText]]>
+                    <![CDATA[$Text]]>
                 </Script>
             </Code>
 
@@ -103,11 +102,9 @@ function New-IseSnippet2
 }
 
 $Data=Get-ChildItem -Path "$PSScriptRoot\Snippets" -Recurse -Filter *.psd1 | Import-PowerShellDataFile | ForEach-Object -Process {
-    $CleanedSnippet=$_["Snippet"].Replace("`r",'')
-    $CaretOffset=$CleanedSnippet.LastIndexOf('^')
-    $CleanedSnippet=$CleanedSnippet.Remove($CaretOffset,1)
-    $_["Snippet"]=$CleanedSnippet
-    $_["CaretOffset"]=$CaretOffset
+    $CaretOffset      = $_["Snippet"].LastIndexOf('^')
+    $_["Snippet"]     = $_["Snippet"].Remove($CaretOffset,1)
+    $_["CaretOffset"] = $CaretOffset
     [pscustomobject]$_
 }
 
@@ -115,12 +112,12 @@ $Data=Get-ChildItem -Path "$PSScriptRoot\Snippets" -Recurse -Filter *.psd1 | Imp
 foreach ($Item in $Data)
 {
     $IseSnippet=@{
-        Title=$Item.SnippetName
-        Description=$Item.Description
-        Text=$Item.Snippet
-        Author=$Item.Author
-        CaretOffset=$Item.CaretOffset
-        OutputDirectory="$PSScriptRoot\BuiltSnippets\ISE"
+        Title           = $Item.SnippetName
+        Description     = $Item.Description
+        Text            = $Item.Snippet
+        Author          = $Item.Author
+        CaretOffset     = $Item.CaretOffset
+        OutputDirectory = "$PSScriptRoot\BuiltSnippets\ISE"
     }
     New-IseSnippet2 @IseSnippet -Force
 }
@@ -129,13 +126,13 @@ foreach ($Item in $Data)
 $VsCodeSnippets=@{}
 foreach ($Item in $Data)
 {
-    $RawSnippet=$Item.Snippet
-    $ModifiedSnippet=$RawSnippet.Replace('$','\$')
+    $RawSnippet      = $Item.Snippet
+    $ModifiedSnippet = $RawSnippet.Replace('$','\$')
+    
+    $CaretOffset     = $Item.CaretOffset + ($RawSnippet.SubString(0,$Item.CaretOffset).Split('$').Count -1)
+    $ModifiedSnippet = $ModifiedSnippet.Insert($CaretOffset,'$0')
 
-    $CaretOffset=$Item.CaretOffset+($ModifiedSnippet.Length - $RawSnippet.Length)
-    $ModifiedSnippet=$ModifiedSnippet.Insert($CaretOffset,'$0')
-
-    $Body=$ModifiedSnippet.Split("`n")
+    $Body=$ModifiedSnippet.Split("`n").Replace("`r","")
 
     $VsCodeSnippets.Add($Item.SnippetName,
         [pscustomobject]@{
@@ -146,4 +143,4 @@ foreach ($Item in $Data)
     )
 }
 [void](New-Item -Path "$PSScriptRoot\BuiltSnippets\VS Code" -ItemType Directory -Force)
-[pscustomobject]$VsCodeSnippets | ConvertTo-Json | Out-File "$PSScriptRoot\BuiltSnippets\VS Code\PowerShell.json" -Encoding default -Force
+[pscustomobject]$VsCodeSnippets | ConvertTo-Json -Compress | Out-File "$PSScriptRoot\BuiltSnippets\VS Code\PowerShell.json" -Encoding default -Force
