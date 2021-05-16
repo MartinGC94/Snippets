@@ -5,7 +5,7 @@
 
 Snippet=@'
 <#
-.Synopsis
+.SYNOPSIS
     Short description.
 .DESCRIPTION
     Long description.
