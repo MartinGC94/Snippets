@@ -4,11 +4,10 @@
     Author="MartinGC94"
 
 Snippet=@'
-function ^Verb-Noun
+function Verb-Noun^
 {
     [CmdletBinding()]
     [OutputType([String])]
-
     Param
     (
         [Parameter()]

@@ -1,9 +1,9 @@
 @{
     SnippetName="OutputType Attribute"
-    Description="OutputType Attribute example."
+    Description="OutputType Attribute."
     Author="MartinGC94"
 
 Snippet=@'
-[OutputType([System.IO.DirectoryInfo],[System.IO.FileInfo])]^
+[OutputType()]^
 '@
 }

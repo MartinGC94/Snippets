@@ -4,7 +4,7 @@
     Author="MartinGC94"
 
 Snippet=@'
-function ^MyFunction ($param1, $param2)
+function MyFunction^ ($param1, $param2)
 {
 }
 '@

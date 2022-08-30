@@ -4,7 +4,7 @@
     Author="MartinGC94"
 
 Snippet=@'
-enum ^Animals
+enum Animals^
 {
     Dog    = 0
     Cat    = 1

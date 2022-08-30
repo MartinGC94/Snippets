@@ -1,10 +1,11 @@
 @{
     SnippetName="Enum Bit flags"
-    Description="Basic enum with bit flags"
+    Description="Basic enum with flags"
     Author="MartinGC94"
 
 Snippet=@'
-[Flags()] enum ^Animals
+[Flags()]
+enum Animals^
 {
     Dog    = 1
     Cat    = 2

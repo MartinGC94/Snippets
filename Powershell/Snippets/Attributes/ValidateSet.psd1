@@ -1,9 +1,9 @@
 @{
     SnippetName="ValidateSet Attribute"
-    Description="ValidateSet Attribute example."
+    Description="ValidateSet Attribute."
     Author="MartinGC94"
 
 Snippet=@'
-[ValidateSet("Cat","Dog",IgnoreCase=$false)]^
+[ValidateSet()]^
 '@
 }

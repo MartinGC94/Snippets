@@ -5,8 +5,7 @@
 
 Snippet=@'
 do
-{^
-}
-until ($x -gt 0)
+{^}
+until ($true)
 '@
 }

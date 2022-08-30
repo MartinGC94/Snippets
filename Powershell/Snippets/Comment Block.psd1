@@ -4,8 +4,6 @@
     Author="MartinGC94"
 
 Snippet=@'
-<#
-^
-#>
+<#^#>
 '@
 }

@@ -4,8 +4,7 @@
     Author="MartinGC94"
 
 Snippet=@'
-while ($x -gt 0)
-{^
-}
+while ($true)
+{^}
 '@
 }

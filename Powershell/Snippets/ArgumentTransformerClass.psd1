@@ -4,7 +4,7 @@
     Author="MartinGC94"
 
 Snippet=@'
-class TimeZoneInfoTransform : System.Management.Automation.ArgumentTransformationAttribute 
+class TimeZoneInfoTransformAttribute : System.Management.Automation.ArgumentTransformationAttribute 
 {
     [System.Object] Transform([System.Management.Automation.EngineIntrinsics]$engineIntrinsics, [System.Object]$inputData)
     {
@@ -12,10 +12,8 @@ class TimeZoneInfoTransform : System.Management.Automation.ArgumentTransformatio
         {
             return $inputData
         }
-        
-        $AvailableTimeZones=[System.TimeZoneInfo]::GetSystemTimeZones()
 
-        $FoundTimeZone=foreach ($TimeZone in $AvailableTimeZones)
+        $FoundTimeZone = foreach ($TimeZone in [System.TimeZoneInfo]::GetSystemTimeZones())
         {
             if ($inputData -eq $TimeZone.Id -or $inputData -eq $TimeZone.DisplayName)
             {
@@ -27,6 +25,6 @@ class TimeZoneInfoTransform : System.Management.Automation.ArgumentTransformatio
     }
 }
 #How to use:
-[TimeZoneInfoTransform()]^
+[TimeZoneInfoTransformAttribute()]^
 '@
 }

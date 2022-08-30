@@ -4,8 +4,7 @@
     Author="MartinGC94"
 
 Snippet=@'
-for ($i = 0; $i -lt $SomeCollection.Count; $i++)
-{^
-}
+for ($i = 0; $i -lt $Collection.Count; $i++)
+{^}
 '@
 }

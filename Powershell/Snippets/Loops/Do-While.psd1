@@ -5,8 +5,7 @@
 
 Snippet=@'
 do
-{^
-}
-while ($x -gt 0)
+{^}
+while ($true)
 '@
 }

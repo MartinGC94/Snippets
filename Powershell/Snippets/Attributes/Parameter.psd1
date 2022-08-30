@@ -1,18 +1,9 @@
 @{
     SnippetName="Parameter Attribute"
-    Description="Parameter Attribute example."
+    Description="Parameter Attribute."
     Author="MartinGC94"
 
 Snippet=@'
-[Parameter(
-    Position                        = 0,
-    ParameterSetName                = "ParameterSet1",
-    Mandatory                       = $true,
-    ValueFromPipeline               = $true,
-    ValueFromPipelineByPropertyName = $true,
-    ValueFromRemainingArguments     = $true,
-    HelpMessage                     = "Mandatory help message.",
-    DontShow                        = $false
-)]^
+[Parameter()]^
 '@
 }
